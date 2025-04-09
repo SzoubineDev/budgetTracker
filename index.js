@@ -46,12 +46,12 @@ function GenerateTemplate(id, source, amount, time) {
 }
 //adding transaction to our website dom function
 function addTransactionDom(id, source, amount, time) {
-  if (source.trim() === "") {
+  if (source.trim() === "" || amount==='NaN') {
     warning.textContent="please enter a valid source !"
     warning.setAttribute("class", "warning-source");
   } else if (amount>0){
     incomeList.innerHTML+=GenerateTemplate(id, source, amount,time);
-  }else{
+  }else if (amount<0){
     expenseList.innerHTML+=GenerateTemplate(id, source, amount,time);
   }
 }
@@ -69,7 +69,7 @@ function addTransaction(source, amount) {
   const date = new Date();
   const transaction = {
     source: source,
-    amount: Number(amount),
+    amount: amount,
     id: Math.round(Math.random() * 100000),
     date: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`,
   };
@@ -88,8 +88,9 @@ function addTransaction(source, amount) {
 // submit and do all the transaction tasks (add transaction + appearing it at dom + updating stats)
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  addTransaction(form.source.value, form.amount.value);
+  addTransaction(form.source.value, parseFloat(form.amount.value));
   updatedStats();
+  console.log(typeof parseFloat(form.amount.value))
   if (form.source.value.trim()==="" || form.amount.value === ""){
     warning.classList.add("warning-source");
     warning.textContent="please enter a both source and amount !"
