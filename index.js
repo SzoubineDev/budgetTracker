@@ -24,7 +24,7 @@ function updatedStats() {
 
   income.innerText = `${updatedIncome}`;
   const updatedExpense = transactions.filter(transaction => transaction.amount < 0).reduce((acc, curr) => {
-    acc = Math.abs(acc + curr.amount);
+    acc =((acc +  Math.abs(curr.amount)));
     return acc;
   }, 0)
 
