@@ -23,7 +23,6 @@ function updatedStats() {
   income.innerText = `${updatedIncome}`;
   const updatedExpense = transactions.filter(transaction => transaction.amount < 0).reduce((acc, curr) => {
     acc = Math.abs(acc + curr.amount);
-
     return acc;
   }, 0)
   console.log(updatedExpense);
@@ -80,8 +79,9 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   addTransaction(form.source.value, form.amount.value);
   updatedStats();
-  form.reset();
-
+  if (!warning.classList.contains("warning-source")){
+    form.reset();
+  }
 });
 function getTransactions() {
   transactions.forEach((transaction) => {
