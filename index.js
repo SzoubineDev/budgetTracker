@@ -73,7 +73,7 @@ function addTransaction(source, amount) {
     id: Math.round(Math.random() * 100000),
     date: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`,
   };
-  if (source.trim() === "") {
+  if (source.trim() === "" || amount ==="") {
     warning.textContent = "please enter a valid source !"
   }else{
     transactions.push(transaction);}
