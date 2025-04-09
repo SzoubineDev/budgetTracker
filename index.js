@@ -109,7 +109,7 @@ function getTransactions() {
           transaction.amount,
           transaction.date
       );
-    } else {
+    } else if (transaction.amount < 0){
       expenseList.innerHTML += GenerateTemplate(
           transaction.id,
           transaction.source,
