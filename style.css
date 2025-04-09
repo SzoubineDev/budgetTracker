@@ -189,7 +189,9 @@ h3{
 .records i.delete:hover{
     color: #B42B51;
 }
-
+.expense-add{
+    color: #B42B51;
+}
 /* Existing CSS remains the same until the end, then add these media queries */
 
 /* Medium devices (tablets, 768px and below) */
