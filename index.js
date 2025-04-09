@@ -87,7 +87,8 @@ function addTransaction(source, amount) {
 // submit and do all the transaction tasks (add transaction + appearing it at dom + updating stats)
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  addTransaction(form.source.value, form.amount.value);
+  const amount = parseFloat(form.amount.value); // This already handles negatives
+  addTransaction(form.source.value, amount);
   updatedStats();
   if (!warning.classList.contains("warning-source")){
     form.reset();
