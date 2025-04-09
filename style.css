@@ -36,7 +36,7 @@ h3{
 
 .heading {
     margin: 30px auto;
-    padding: 0px 20px;
+    padding: 0 20px;
 }
 
 .heading .title{
@@ -67,7 +67,7 @@ h3{
     padding: 20px;
     box-shadow: var(--box-shadow);
     border-radius: 5px;
-    margin: 0px 10px;
+    margin: 0 10px;
 }
 
 .actions .add{
@@ -85,7 +85,7 @@ h3{
 .actions .add input[type="submit"]{
     padding: 7px 15px;
     border-radius: 5px;
-    border: 0px;
+    border: 0;
     background-color: #2666CF;
     color: #FFFFFF;
     cursor: pointer;
@@ -128,7 +128,7 @@ h3{
     margin: 40px 10px;
     background-color: #FFFFFF;
     border-radius: 10px;
-    padding: 30px 0px;
+    padding: 30px 0;
     box-shadow: var(--box-shadow);
 }
 
@@ -150,7 +150,7 @@ h3{
     justify-content: space-between;
     background-color: #FFFFFF;
     padding: 10px;
-    margin: 12px 0px;
+    margin: 12px 0;
     min-width: 250px;
     box-shadow: var(--box-shadow);
     font-size: 18px;
@@ -190,3 +190,121 @@ h3{
     color: #B42B51;
 }
 
+/* Existing CSS remains the same until the end, then add these media queries */
+
+/* Medium devices (tablets, 768px and below) */
+@media only screen and (max-width: 768px) {
+    .outer-wrap {
+        padding: 20px;
+    }
+
+    .heading {
+        margin: 20px auto;
+    }
+
+    .heading .title {
+        font-size: 26px;
+    }
+
+    .heading .subtitle {
+        font-size: 18px;
+    }
+
+    .transaction-control {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .actions, .stats {
+        margin: 0;
+        width: 100%;
+    }
+
+    .transaction-history {
+        margin: 30px 0;
+        padding: 20px 0;
+    }
+
+    .records {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .records div {
+        width: 100%;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+}
+
+/* Small devices (phones, 576px and below) */
+@media only screen and (max-width: 576px) {
+    .outer-wrap {
+        padding: 15px;
+    }
+
+    .heading .title {
+        font-size: 24px;
+    }
+
+    .heading .subtitle {
+        font-size: 16px;
+    }
+
+    .actions .add input,
+    .actions .add input[type="submit"],
+    .stats p,
+    .records li,
+    .records span {
+        font-size: 16px;
+    }
+
+    .actions .add input {
+        margin: 8px 0;
+    }
+
+    .stats p {
+        margin: 15px 0;
+        padding: 8px 15px;
+    }
+
+    .records li {
+        padding: 8px;
+        margin: 10px 0;
+        min-width: auto;
+    }
+
+    .records i.delete {
+        margin-left: 10px;
+        font-size: 16px;
+    }
+}
+
+/* Extra small devices (phones, 400px and below) */
+@media only screen and (max-width: 400px) {
+    .heading .title {
+        font-size: 22px;
+    }
+
+    .heading .subtitle {
+        font-size: 15px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .actions, .stats {
+        padding: 15px;
+    }
+
+    .transaction-history {
+        padding: 15px 0;
+    }
+
+    .records {
+        margin: 15px 10px;
+    }
+}
