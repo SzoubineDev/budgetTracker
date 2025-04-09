@@ -21,16 +21,16 @@ function updatedStats() {
     acc = (acc + curr.amount);
     return acc;
   }, 0)
-  console.log(updatedIncome);
+
   income.innerText = `${updatedIncome}`;
   const updatedExpense = transactions.filter(transaction => transaction.amount < 0).reduce((acc, curr) => {
     acc = Math.abs(acc + curr.amount);
     return acc;
   }, 0)
-  console.log(updatedExpense);
+
   expense.innerText = `${updatedExpense}`;
   const updatedBalance = updatedIncome - updatedExpense;
-  console.log(updatedBalance);
+
   balance.innerText = `${updatedBalance}`;
 }
 //updating stats after reload
