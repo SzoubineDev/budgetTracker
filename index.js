@@ -7,9 +7,9 @@ const income = document.getElementById("income");
 const expense = document.getElementById("expense");
 // parsing  data from local storage
 let transactions =
-  localStorage.getItem("transactions") !== null
-    ? JSON.parse(localStorage.getItem("transactions"))
-    : [];
+    localStorage.getItem("transactions") !== null
+        ? JSON.parse(localStorage.getItem("transactions"))
+        : [];
 //amount should be a number type
 transactions=transactions.map(transaction => {
   const newAmount=Number(transaction.amount);
@@ -44,21 +44,22 @@ function GenerateTemplate(id, source, amount, time) {
                   </li>
                `;
 }
- //adding transaction to our website dom function
+//adding transaction to our website dom function
 function addTransactionDom(id, source, amount, time) {
   if (source.trim() === "") {
-warning.textContent="please enter a valid source !"
+    warning.textContent="please enter a valid source !"
     warning.setAttribute("class", "warning-source");
-  }else if (amount>0){
-    incomeList.innerHTML=GenerateTemplate(id, source, amount,time);
+  } else if (amount>0){
+    incomeList.innerHTML+=GenerateTemplate(id, source, amount,time);
   }else{
-    expenseList.innerHTML=GenerateTemplate(id, source, amount,time);
+    expenseList.innerHTML+=GenerateTemplate(id, source, amount,time);
   }
 }
 // hiding warning after source input
-form.addEventListener("keyup", e => {
+form.addEventListener("keyup", () => {
   const value = form.source.value;
-  if (value.length!==0){
+  const valueAmount = form.amount.value;
+  if (value.length!==0&&valueAmount.length!==0){
     warning.textContent = "";
     warning.classList.remove("warning-source");
   }
@@ -75,22 +76,25 @@ function addTransaction(source, amount) {
   if (source.trim() === "") {
     warning.textContent = "please enter a valid source !"
   }else{
-  transactions.push(transaction);}
+    transactions.push(transaction);}
   localStorage.setItem("transactions", JSON.stringify(transactions));
   addTransactionDom(
-    transaction.id,
-    transaction.source,
-    transaction.amount,
-    transaction.date
+      transaction.id,
+      transaction.source,
+      transaction.amount,
+      transaction.date
   );
 }
 // submit and do all the transaction tasks (add transaction + appearing it at dom + updating stats)
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  const amount = parseFloat(form.amount.value); // This already handles negatives
-  addTransaction(form.source.value, amount);
+  addTransaction(form.source.value, form.amount.value);
   updatedStats();
-  if (!warning.classList.contains("warning-source")){
+  if (form.source.value.trim()==="" || form.amount.value === ""){
+    warning.classList.add("warning-source");
+    warning.textContent="please enter a both source and amount !"
+  }
+  else if (!warning.classList.contains("warning-source")){
     form.reset();
   }
 });
@@ -99,17 +103,17 @@ function getTransactions() {
   transactions.forEach((transaction) => {
     if (transaction.amount > 0) {
       incomeList.innerHTML += GenerateTemplate(
-        transaction.id,
-        transaction.source,
-        transaction.amount,
-        transaction.date
+          transaction.id,
+          transaction.source,
+          transaction.amount,
+          transaction.date
       );
     } else {
       expenseList.innerHTML += GenerateTemplate(
-        transaction.id,
-        transaction.source,
-        transaction.amount,
-        transaction.date
+          transaction.id,
+          transaction.source,
+          transaction.amount,
+          transaction.date
       );
     }
   });

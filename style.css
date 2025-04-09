@@ -101,7 +101,7 @@ h3{
     border-radius: 2px;
     text-align: center;
 }
-.warning-source{
+.warning-source,.warning-amount{
     color: red;
 }
 
