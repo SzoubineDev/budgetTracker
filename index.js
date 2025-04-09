@@ -1,4 +1,5 @@
 const form = document.querySelector(".add");
+const warning = document.querySelector(".add p");
 const incomeList = document.querySelector("ul.income-list");
 const expenseList = document.querySelector("ul.expense-list");
 const balance = document.getElementById("balance");
@@ -41,12 +42,23 @@ function GenerateTemplate(id, source, amount, time) {
                `;
 }
 function addTransactionDom(id, source, amount, time) {
-  if (amount >= 0) {
+  if (source.trim() === "") {
+warning.textContent="please enter a valid source !"
+    warning.setAttribute("class", "warning-source");
+  }
+  else if (amount >= 0) {
     incomeList.innerHTML += GenerateTemplate(id, source, amount, time);
   } else if(amount<0){
     expenseList.innerHTML += GenerateTemplate(id, source, amount, time);
   }
 }
+form.addEventListener("keyup", e => {
+  const value = form.source.value;
+  if (value.length!==0){
+    warning.textContent = "";
+    warning.classList.remove("warning-source");
+  }
+})
 function addTransaction(source, amount) {
   const date = new Date();
   const transaction = {
