@@ -15,23 +15,30 @@
     list-style: none;
 }
 
+body{
+    background-color: #082032;
+    color: #E0E0E0;
+}
 h3{
     text-align: center;
     margin-bottom: 15px;
     text-decoration: underline solid #393E46 3px;
     font-size: 24px;
+    
 }
+
 
 .outer-wrap{
     width: 100%;
     min-height: 100vh;
-    background-color: #F5F7FA;
+    background-color: #121212;
     padding: 30px;
 }
 
 .inner-wrap{
     max-width: 1200px;
     margin: auto;
+    background-color: #1E1E1E;
 }
 
 .heading {
@@ -41,14 +48,14 @@ h3{
 
 .heading .title{
     font-size: 30px;
-    color: #000000;
+    color: #E0E0E0;
     font-weight: 500;
     text-align: center;
 }
 
 .heading .subtitle{
     font-size: 20px;
-    color: #000000;
+    color: #B0B0B0;
     font-weight: 300;
     text-align: center;
 }
@@ -63,7 +70,7 @@ h3{
 
 .actions, .stats{
     flex-grow: 1;
-    background-color: #FFFFFF;
+    background-color:#2e3530;
     padding: 20px;
     box-shadow: var(--box-shadow);
     border-radius: 5px;
@@ -86,7 +93,7 @@ h3{
     padding: 7px 15px;
     border-radius: 5px;
     border: 0;
-    background-color: #2666CF;
+    background-color: #4CAF50;
     color: #FFFFFF;
     cursor: pointer;
     box-shadow: var(--box-shadow);
@@ -104,19 +111,21 @@ h3{
 .warning-source,.warning-amount{
     color: red;
 }
-
+.stats{
+    color: white;
+}
 .stats p.balance{
-    background-color: rgba(234, 226, 67, 0.57);
+    background-color: rgba(255, 81, 0, 0.849);
     border-right: 10px solid #F6C065;
 }
 
 .stats p.income{
-    background-color: #e7fff1ad;
+    background-color: #3ec978ad;
     border-right: 10px solid #16c77a;
 }
 
 .stats p.expense{
-    background-color: #ffeef0bb;
+    background-color: #d14c5bbb;
     border-right: 10px solid #EB596E;
 }
 
@@ -126,7 +135,7 @@ h3{
 
 .transaction-history{
     margin: 40px 10px;
-    background-color: #FFFFFF;
+    background-color: #2e3530;
     border-radius: 10px;
     padding: 30px 0;
     box-shadow: var(--box-shadow);
@@ -148,7 +157,7 @@ h3{
 .records li{
     display: flex;
     justify-content: space-between;
-    background-color: #FFFFFF;
+    background-color: #1E1E1E;
     padding: 10px;
     margin: 12px 0;
     min-width: 250px;
@@ -157,19 +166,25 @@ h3{
 }
 
 .records .income li{
-    border-left: 10px solid #2ECC71;
+    border-left: 10px solid #66BB6A;
+    color: rgb(127, 233, 127);
 }
 
 .records .expense li{
     border-left: 10px solid #DF5E5E;
+    color: rgb(250, 39, 39);
+
 }
 
 .records li p:first-child{
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+   
 }
-
+.bi-arrow-up-square-fill,.bi-arrow-down-square-fill{
+    margin-right: 15px;
+}
 .records span{
     font-size: 18px;
 }
@@ -181,13 +196,13 @@ h3{
 
 .records i.delete{
     margin-left: 15px;
-    color: #082032;
+    color: rgb(224, 93, 93);
     cursor: pointer;
     font-size: 18px;
 }
 
 .records i.delete:hover{
-    color: #B42B51;
+    color: #f51453;
 }
 .expense-add{
     color: #B42B51;
@@ -240,6 +255,8 @@ h3{
         font-size: 22px;
     }
 }
+li.income-list{
+background-color: #082032;}
 
 /* Small devices (phones, 576px and below) */
 @media only screen and (max-width: 576px) {
