@@ -5,6 +5,9 @@ const expenseList = document.querySelector("ul.expense-list");
 const balance = document.getElementById("balance");
 const income = document.getElementById("income");
 const expense = document.getElementById("expense");
+const addIncome = document.getElementById("add-income")
+const addExpense = document.getElementById("add-expense")
+
 // parsing  data from local storage
 let transactions =
     localStorage.getItem("transactions") !== null
@@ -67,11 +70,11 @@ function addTransactionDom(id, source, amount, time) {
     expenseList.innerHTML+=GenerateTemplate(id, source, amount,time);
   }
 }
-// hiding warning after source input
+// hiding warning after source input  
 form.addEventListener("keyup", () => {
-  const value = form.source.value;
+  const source = form.source.value;
   const valueAmount = form.amount.value;
-  if (value.length!==0&&valueAmount.length!==0){
+  if (source.length!==0&&valueAmount.length!==0){
     warning.textContent = "";
     warning.classList.remove("warning-source");
   }
@@ -97,10 +100,22 @@ function addTransaction(source, amount) {
       transaction.date
   );
 }
-// submit and do all the transaction tasks (add transaction + appearing it at dom + updating stats)
-form.addEventListener("submit", (event) => {
+//submit and do all the transaction tasks (add transaction + appearing it at dom + updating stats)
+addIncome.addEventListener("click", (event) => {
   event.preventDefault();
   addTransaction(form.source.value, parseFloat(form.amount.value));
+  updatedStats();
+  if (form.source.value.trim()==="" || form.amount.value === ""){
+    warning.classList.add("warning-source");
+    warning.textContent="please enter a valid source and amount !"
+  }
+  else if (!warning.classList.contains("warning-source")){
+    form.reset();
+  }
+});
+addExpense.addEventListener("click", (event) => {
+  event.preventDefault();
+  addTransaction(form.source.value,  - parseFloat(form.amount.value));
   updatedStats();
   if (form.source.value.trim()==="" || form.amount.value === ""){
     warning.classList.add("warning-source");
